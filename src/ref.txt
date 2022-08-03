@@ -1,0 +1,51 @@
+//
+	// We are working on Borwser for now.. 
+	// 
+
+	use - meet.ainnotate.com 
+
+
+	function get_meeting_link()  {
+
+		ml = start_call_get_link()
+
+		s_id = join_s(ml) // Silent Recorder S
+		a_id = join_a(ml) // Local guy A  (Naveen)
+
+		return ml --> to UI; 
+	}
+
+
+
+	send ml to remote guys.... --->  Manally
+
+	Remote guys will join..
+
+	Call established...
+
+
+	function start_recording(file_name) {
+
+		stream_to_record = get_stream(s_id); 
+
+		record = RecordRTC(stream_to_record, file_name);
+
+	}
+
+
+	function pause_recording() {
+
+
+	}
+
+
+	function resume_recording() {
+
+		
+	}
+
+
+	function discard_recording() {
+
+
+	}
