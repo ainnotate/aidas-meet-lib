@@ -215,6 +215,10 @@ async function startCustomRecording(ids) {
   recorder_custom.startRecording();
 }
 async function startIndividualRecording(ids) {
+  let local=false
+  if(ids==="local"){
+    local=true
+  }
   const audioContext = new AudioContext();
   dest = audioContext.createMediaStreamDestination();
   let recordingInstructions = ids.split(",");
@@ -251,7 +255,7 @@ async function startIndividualRecording(ids) {
       }
     }
   }
-  if (recordingInstructions.indexOf("l") > -1) {
+  if (local) {
     for (let index = 0; index < localTracks.length; index++) {
       const element_local = localTracks[index];
       const intMediaStream = new MediaStream();
@@ -323,14 +327,14 @@ async function stopRecordingCustom(name) {
 async function stopIndividualRecording(id, name) {
   recorder_all[id].stopRecording(function () {
     let blob = recorder_all[id].getBlob();
-    invokeSaveAsDialog(blob, `${name}_${name}.wav`);
+    invokeSaveAsDialog(blob, `${name}_${id}.wav`);
     recorder_all[id] = null;
   });
 }
 async function pauseIndividualRecording(id) {
   recorder_all[id].pauseRecording();
 }
-async function resumeIndividualRecording(name) {
+async function resumeIndividualRecording(id) {
   recorder_all[id].resumeRecording();
 }
 function onConferenceJoined() {

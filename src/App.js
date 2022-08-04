@@ -42,9 +42,12 @@ function App() {
     for (let index = 0; index < ids.length; index++) {
       window.startIndividualRecording(ids[index]);
     }
+    window.startIndividualRecording('local');
+
   };
   const pauseAllRecording = () => {
     const ids = [];
+    window.pauseIndividualRecording('local');
 
     for (let index = 0; index < participantsModerator.length; index++) {
       ids.push(participantsModerator[index]._id);
@@ -61,6 +64,7 @@ function App() {
 
   const resumeAllRecording = () => {
     const ids = [];
+    window.resumeIndividualRecording("local");
 
     for (let index = 0; index < participantsModerator.length; index++) {
       ids.push(participantsModerator[index]._id);
@@ -76,6 +80,7 @@ function App() {
   };
   const stopAllRecording = () => {
     const ids = [];
+    window.stopIndividualRecording('local');
 
     for (let index = 0; index < participantsModerator.length; index++) {
       ids.push(participantsModerator[index]._id);
@@ -86,7 +91,7 @@ function App() {
       }
     }
     for (let index = 0; index < ids.length; index++) {
-      window.stopAllRecording(ids[index]);
+      window.stopIndividualRecording(ids[index],"ainnotate");
     }
   };
   useEffect(() => {
